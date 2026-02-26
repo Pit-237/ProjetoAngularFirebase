@@ -1,6 +1,18 @@
 <ion-content [fullscreen]="true">
 
-    <ion-button color="secondary">Teste</ion-button>
+    <ion-row *ngFor="let tarefa of this.projeto">
+        <ion-col> Descrição: {{ tarefa.descricao }} </ion-col>
+        <hr>
+        <ion-col> Local: {{ tarefa.local }} </ion-col>
+        <hr>
+        <ion-col> Horario de inicio: {{ tarefa.hora_inicio }} </ion-col>
+        <hr>
+        <ion-col> Horario de termino: {{ tarefa.hora_termino }} </ion-col>
+        <hr>
+        <ion-col *ngIf="tarefa.status=='em espera'" style="color: rgb(179, 12, 12);"> Status: {{ tarefa.status }} </ion-col>
+        <ion-col *ngIf="tarefa.status=='em progresso'" style="color: yellow;"> Status: {{ tarefa.status }} </ion-col>
+        <ion-col *ngIf="tarefa.status=='concluido'" style="color: rgb(10, 143, 43);"> Status: {{ tarefa.status }} </ion-col>
+    </ion-row>
     
     
 </ion-content>
