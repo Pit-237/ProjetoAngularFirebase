@@ -1,6 +1,76 @@
 <ion-content [fullscreen]="true">
 
-    <ion-button color="secondary">Teste</ion-button>
-    
-    
+    <!-- MENU HAMBURGER LATERAL -->
+
+    <ion-menu contentId="main-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Configurar Perfil</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+            <ion-row>
+                <ion-col size="3">
+                    <ion-avatar>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xvYZ4nj2LFdrkxegbhjlDPuUhSDqqt_jEA&s">
+                    </ion-avatar>
+                </ion-col>
+                <ion-col size="9">
+                    <ion-item>
+                        <ion-label>Boxy boo</ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>
+                            buxaboo@scarymail.com
+                        </ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>
+                            @Boxy237
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-icon name="cube-outline" slot="end"></ion-icon>
+                        <ion-label>Abrir a caixa</ion-label>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-icon name="eye-off-outline" slot="end"></ion-icon>
+                        <ion-label>Mate Harley Sawyer</ion-label>
+                    </ion-item>
+
+                    <ion-item lines="none">
+                        <ion-icon name="bonfire-outline" slot="end"></ion-icon>
+                        <ion-label>Queime a Playtime CO.</ion-label>
+                    </ion-item>
+  
+                </ion-col>
+            </ion-row>
+
+        </ion-content>
+    </ion-menu>
+    <div class="ion-page" id="main-content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>Página inicial</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding"> <ion-row>
+            <ion-col size="12">
+                <ion-datetime></ion-datetime>
+            </ion-col>
+        </ion-row> 
+    </ion-content>
+    </div>
+
 </ion-content>
