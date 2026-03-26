@@ -1,12 +1,80 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="poppy-bg">
 
-    <ng-container *ngFor="let livro of this.livros">
-        <h1>{{ livro.titulo }}</h1>
-        <p>{{ livro.sinopse }}</p>
-        <ng-container *ngFor="let categoria of this.livro.categoria">
-            <marquee>{{ categoria.nome }}</marquee>
+  <div class="header">
+    <h1>📚 Biblioteca Assombrada</h1>
+    <p>Gerencie seus livros... se tiver coragem</p>
+  </div>
+
+  <div class="table-container">
+    <table class="poppy-table">
+      <tr>
+        <th>ISBN</th>
+        <th>Título</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+      </tr>
+
+      <ng-container *ngFor="let livro of livros">
+        <tr>
+          <td>{{livro.isbn}}</td>
+
+          <td class="titulo">
+            {{livro.titulo}}
+          </td>
+
+          <td>
+            <div class="categoria-box">
+              <ng-container *ngFor="let cat of livro.categoria">
+                <span class="categoria-tag">{{ cat.nome }}</span>
+              </ng-container>
+            </div>
+          </td>
+
+          <td class="acoes">
+            <ion-button class="btn-edit" fill="clear">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button class="btn-delete" fill="clear">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </td>
+        </tr>
+      </ng-container>
+
+    </table>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Utilidade</th>
+            <th>Ações</th>
+        </tr>
+
+        <ng-container *ngFor="let produto of produtos">
+            <tr>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.marca}}</td>
+                <td>
+                  <ng-container *ngFor="let util of produto.utilidade">
+                <span class="utilidade-tag">{{ util.nome }}</span>
+              </ng-container>
+                </td>
+                <td class="acoes">
+                    <ion-button class="btn-edit" fill="clear">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </ion-button>
+
+                    <ion-button class="btn-delete" fill="clear">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </ion-button>
+                </td>
+            </tr>
+          
         </ng-container>
-    </ng-container>
-    
-    
+        
+    </table>
+  </div>
+
 </ion-content>

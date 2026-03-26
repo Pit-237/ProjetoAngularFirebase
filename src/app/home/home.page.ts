@@ -4,7 +4,8 @@ import { CrudService } from '../services/crud.service';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
 import { MessageService } from '../services/message.service';
 import { Router } from '@angular/router';
-import { Livro } from './livros.interface';
+import { ILivro } from './acervo.interface';
+import { IProduto } from './produto.interface';
 
 @Component({
   selector: 'app-home',
@@ -13,131 +14,139 @@ import { Livro } from './livros.interface';
 })
 export class HomePage {
 
-livros = [
+  produtos: IProduto[] = [
   {
-    isbn: '587', 
-    titulo: 'All Tomorows', 
-    sinopse: 'Este livro te leva para todos os amanhãs', 
-    data_lancamento: '01/01/1001', 
-    paginas: '123',
-    autor: [
-      {nome:'Peter Griffin', email:'hehehehehheh@outlook.com'}
-    ],
-    categoria: [
-      { nome: 'Ficção'}
-    ],
-    editora: {nome: 'Tengo', email: 'Tengo@outlook.com'}
+    nome: "Camiseta",
+    marca: "Nike",
+    utilidade: [{ nome: "Vestir" }]
   },
-
   {
-    isbn: '588',
-    titulo: 'O Último Horizonte',
-    sinopse: 'Uma jornada além das estrelas.',
-    data_lancamento: '12/05/2010',
-    paginas: '320',
-    autor: [{ nome: 'Ana Souza', email: 'ana@outlook.com' }],
-    categoria: [{ nome: 'Ficção Científica' }],
-    editora: { nome: 'Galáxia', email: 'contato@galaxia.com' }
+    nome: "Tênis",
+    marca: "Adidas",
+    utilidade: [{ nome: "Correr" }]
   },
-
   {
-    isbn: '589',
-    titulo: 'Sombras do Passado',
-    sinopse: 'Segredos antigos vêm à tona.',
-    data_lancamento: '22/08/2015',
-    paginas: '280',
-    autor: [{ nome: 'Carlos Lima', email: 'carlos@email.com' }],
-    categoria: [{ nome: 'Mistério' }],
-    editora: { nome: 'Noite', email: 'editora@noite.com' }
+    nome: "Relógio",
+    marca: "Casio",
+    utilidade: [{ nome: "Ver horas" }]
   },
-
   {
-    isbn: '590',
-    titulo: 'Amor em Paris',
-    sinopse: 'Um romance inesquecível na cidade luz.',
-    data_lancamento: '14/02/2018',
-    paginas: '210',
-    autor: [{ nome: 'Juliana Rocha', email: 'ju@email.com' }],
-    categoria: [{ nome: 'Romance' }],
-    editora: { nome: 'Coração', email: 'amor@editora.com' }
+    nome: "Mochila",
+    marca: "Puma",
+    utilidade: [{ nome: "Carregar itens" }]
   },
-
   {
-    isbn: '591',
-    titulo: 'Código Perdido',
-    sinopse: 'Um hacker descobre um segredo global.',
-    data_lancamento: '09/11/2020',
-    paginas: '350',
-    autor: [{ nome: 'Marcos Silva', email: 'marcos@email.com' }],
-    categoria: [{ nome: 'Tecnologia' }],
-    editora: { nome: 'Digital Books', email: 'tech@books.com' }
+    nome: "Óculos de sol",
+    marca: "Ray-Ban",
+    utilidade: [{ nome: "Proteger os olhos" }]
   },
-
   {
-    isbn: '592',
-    titulo: 'A Floresta Viva',
-    sinopse: 'Mistérios escondidos na natureza.',
-    data_lancamento: '03/03/2012',
-    paginas: '190',
-    autor: [{ nome: 'Fernanda Alves', email: 'fer@email.com' }],
-    categoria: [{ nome: 'Aventura' }],
-    editora: { nome: 'Verde', email: 'natureza@verde.com' }
-  },
-
-  {
-    isbn: '593',
-    titulo: 'Guerra dos Reinos',
-    sinopse: 'Batalhas épicas por poder.',
-    data_lancamento: '18/07/2016',
-    paginas: '500',
-    autor: [{ nome: 'Rafael Costa', email: 'rafa@email.com' }],
-    categoria: [{ nome: 'Fantasia' }],
-    editora: { nome: 'Dragão', email: 'fantasia@dragao.com' }
-  },
-
-  {
-    isbn: '594',
-    titulo: 'Mente Milionária',
-    sinopse: 'Como desenvolver hábitos de sucesso.',
-    data_lancamento: '01/01/2019',
-    paginas: '230',
-    autor: [{ nome: 'Paulo Mendes', email: 'paulo@email.com' }],
-    categoria: [{ nome: 'Negócios' }],
-    editora: { nome: 'Sucesso', email: 'contato@sucesso.com' }
-  },
-
-  {
-    isbn: '595',
-    titulo: 'Histórias do Brasil',
-    sinopse: 'Relatos marcantes da história brasileira.',
-    data_lancamento: '21/04/2005',
-    paginas: '410',
-    autor: [{ nome: 'Lucia Fernandes', email: 'lucia@email.com' }],
-    categoria: [{ nome: 'História' }],
-    editora: { nome: 'Brasil', email: 'historia@brasil.com' }
-  },
-
-  {
-    isbn: '596',
-    titulo: 'O Despertar',
-    sinopse: 'Uma jornada espiritual transformadora.',
-    data_lancamento: '10/10/2013',
-    paginas: '275',
-    autor: [{ nome: 'Ricardo Nunes', email: 'ricardo@email.com' }],
-    categoria: [{ nome: 'Espiritualidade' }],
-    editora: { nome: 'Luz', email: 'luz@editora.com' }
-  },
-
-  {
-    isbn: '597',
-    titulo: 'Segredos da Cozinha',
-    sinopse: 'Receitas incríveis e dicas culinárias.',
-    data_lancamento: '05/06/2021',
-    paginas: '150',
-    autor: [{ nome: 'Clara Gomes', email: 'clara@email.com' }],
-    categoria: [{ nome: 'Culinária' }],
-    editora: { nome: 'Sabor', email: 'cozinha@sabor.com' }
+    nome: "Boné",
+    marca: "New Era",
+    utilidade: [{ nome: "Proteger do sol" }]
   }
 ];
 
+  livros: ILivro[] = [
+  {
+    isbn: "123",
+    titulo: "All tomorrows",
+    categoria: [{ nome: "Ficção" }]
+  },
+  {
+    isbn: "124",
+    titulo: "Dom Casmurro",
+    categoria: [{ nome: "Romance" }]
+  },
+  {
+    isbn: "125",
+    titulo: "O Hobbit",
+    categoria: [{ nome: "Fantasia" }]
+  },
+  {
+    isbn: "126",
+    titulo: "1984",
+    categoria: [{ nome: "Distopia" }]
+  },
+  {
+    isbn: "127",
+    titulo: "A Revolução dos Bichos",
+    categoria: [{ nome: "Satírico" }]
+  },
+  {
+    isbn: "128",
+    titulo: "Harry Potter e a Pedra Filosofal",
+    categoria: [{ nome: "Fantasia" }]
+  },
+  {
+    isbn: "129",
+    titulo: "O Senhor dos Anéis",
+    categoria: [{ nome: "Fantasia" }]
+  },
+  {
+    isbn: "130",
+    titulo: "Percy Jackson e o Ladrão de Raios",
+    categoria: [{ nome: "Aventura" }]
+  },
+  {
+    isbn: "131",
+    titulo: "O Código Da Vinci",
+    categoria: [{ nome: "Suspense" }]
+  },
+  {
+    isbn: "132",
+    titulo: "Jogos Vorazes",
+    categoria: [{ nome: "Distopia" }]
+  },
+  {
+    isbn: "133",
+    titulo: "A Menina que Roubava Livros",
+    categoria: [{ nome: "Drama" }]
+  },
+  {
+    isbn: "134",
+    titulo: "It: A Coisa",
+    categoria: [{ nome: "Terror" }]
+  },
+  {
+    isbn: "135",
+    titulo: "Drácula",
+    categoria: [{ nome: "Terror" }]
+  },
+  {
+    isbn: "136",
+    titulo: "Frankenstein",
+    categoria: [{ nome: "Ficção Científica" }]
+  },
+  {
+    isbn: "137",
+    titulo: "O Pequeno Príncipe",
+    categoria: [{ nome: "Infantil" }]
+  },
+  {
+    isbn: "138",
+    titulo: "As Crônicas de Nárnia",
+    categoria: [{ nome: "Fantasia" }]
+  },
+  {
+    isbn: "139",
+    titulo: "Cem Anos de Solidão",
+    categoria: [{ nome: "Realismo Mágico" }]
+  },
+  {
+    isbn: "140",
+    titulo: "O Alquimista",
+    categoria: [{ nome: "Ficção" }]
+  },
+  {
+    isbn: "141",
+    titulo: "A Metamorfose",
+    categoria: [{ nome: "Clássico" }]
+  },
+  {
+    isbn: "142",
+    titulo: "O Nome do Vento",
+    categoria: [{ nome: "Fantasia" }]
+  }
+];
 }

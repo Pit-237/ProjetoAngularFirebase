@@ -1,0 +1,103 @@
+$poppy-red: #ff0033;
+$poppy-dark: #0a0a0a;
+$poppy-darker: #1a0000;
+$poppy-blue: #00e5ff;
+$poppy-gray: #ccc;
+
+.poppy-bg {
+  --background: linear-gradient(180deg, $poppy-dark, $poppy-darker);
+  color: #fff;
+  font-family: 'Courier New', monospace;
+
+  .header {
+    text-align: center;
+    padding: 20px;
+
+    h1 {
+      color: $poppy-red;
+      text-shadow: 0 0 10px $poppy-red;
+    }
+
+    p {
+      color: $poppy-gray;
+      font-size: 14px;
+    }
+  }
+
+  .table-container {
+    padding: 15px;
+    overflow-x: auto;
+  }
+
+  .poppy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    border: 2px solid $poppy-red;
+    box-shadow: 0 0 20px rgba($poppy-red, 0.3);
+
+    th {
+      background: #220000;
+      color: $poppy-red;
+      padding: 12px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
+
+    tr {
+      transition: 0.3s;
+
+      &:hover {
+        background: #1f0000;
+      }
+    }
+
+    .titulo {
+      color: $poppy-blue;
+      text-shadow: 0 0 5px $poppy-blue;
+    }
+
+    .categoria-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .categoria-tag {
+        background: #330000;
+        color: lighten($poppy-red, 10%);
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        box-shadow: 0 0 5px $poppy-red;
+      }
+    }
+
+    .acoes {
+      ion-button {
+        transition: 0.2s;
+
+        &.btn-edit {
+          color: $poppy-blue;
+
+          &:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px $poppy-blue;
+          }
+        }
+
+        &.btn-delete {
+          color: $poppy-red;
+
+          &:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px $poppy-red;
+          }
+        }
+      }
+    }
+  }
+}
