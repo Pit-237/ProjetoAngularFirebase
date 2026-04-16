@@ -1,30 +1,37 @@
 <ion-content [fullscreen]="true">
 
-    <ion-row class="ion-justify-content-center">
+    <ion-grid>
 
-        <ion-col size="4">
-            <ion-card>
-                <ion-card-content>
-                    {{ this.veiculo.modelo }}
-
-                    <ion-input [(ngModel)]="this.veiculo.modelo" label="Modelo" labelPlacement="stacked"></ion-input>
-                    <ion-input [(ngModel)]="this.veiculo.marca" label="Marca" labelPlacement="stacked"></ion-input>
-                    <ion-input [(ngModel)]="this.veiculo.cor" label="Cor" labelPlacement="stacked"></ion-input>
-
-                    <ion-button color="primary" fill="outline" (click)="this.adicionar()">Adicionar</ion-button>
-                </ion-card-content>
-            </ion-card>
+    <ion-row>
+        <ion-col size="6" background-color="danger" id="image" height="100%">
 
         </ion-col>
-        <ion-col size="4">
-            
-            <ng-container *ngFor="let veiculo of this.concessionaria">
-                <ion-item>{{veiculo.modelo}} - {{veiculo.marca}} - {{veiculo.cor}}</ion-item>
-                <!-- this.concessionaria.push([{...this.veiculo}]) -->
-            </ng-container>
-          
+
+        <ion-col size="6" id="cadastro">
+            <ion-row class="ion-justify-content-center">
+                <ion-col size="8">
+                    <h1 class="ion-text-center">Criar Conta</h1>
+                    <ion-input placeholder="Nome"></ion-input>
+                    <ion-input placeholder="E-mail" type="email"></ion-input>
+                    <ion-input placeholder="Senha" type="password"></ion-input>
+                    <ion-input placeholder="Confirmar Senha" type="password"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-justify-content-center ion-text-center">
+                <ion-col size="4">
+            <ion-button class="baseButton" expand="block">Criar Conta</ion-button>
+
+            Login.com
+            <ion-button>Google</ion-button>
+            <ion-button>Facebook</ion-button>
+            <ion-button>Twitter</ion-button>
+
+                    </ion-col>
+            </ion-row>
+
         </ion-col>
     </ion-row>
-    
-    
+
+    </ion-grid>
 </ion-content>

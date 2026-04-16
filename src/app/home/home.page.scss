@@ -1,0 +1,15 @@
+#image{
+    display: flex;
+    height: 100px;
+    background-size: cover;
+    border: 1px solid black;
+    background-image: url(https://wallpaper-house.com/data/out/5/wallpaper2you_64430.jpg);
+}
+
+#cadastro{
+    flex-direction: column;
+}
+.baseButton{
+    --border-radius: 10px;
+    margin-top: 10px;
+}
