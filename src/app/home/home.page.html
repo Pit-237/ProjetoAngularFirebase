@@ -11,10 +11,14 @@
             <ion-row class="ion-justify-content-center">
                 <ion-col size="8">
                     <h1 class="ion-text-center">Criar Conta</h1>
-                    <ion-input placeholder="Nome"></ion-input>
-                    <ion-input placeholder="E-mail" type="email"></ion-input>
-                    <ion-input placeholder="Senha" type="password"></ion-input>
-                    <ion-input placeholder="Confirmar Senha" type="password"></ion-input>
+                    <label for="nome">Nome</label>
+                    <ion-input id="nome" placeholder="Ex: Leonardo"></ion-input>
+                    <label for="email">E-mail</label>
+                    <ion-input id="email" placeholder="leo@hotmail.com" type="email"></ion-input>
+                    <label for="senha">Senha</label>
+                    <ion-input id="senha" placeholder="Minimo 6 caracteres" type="password"></ion-input>
+                    <label for="confirmar-senha">Confirmar Senha</label>
+                    <ion-input id="confirmar-senha" placeholder="Mesma senha" type="password"></ion-input>
                 </ion-col>
             </ion-row>
 
@@ -23,9 +27,9 @@
             <ion-button class="baseButton" expand="block">Criar Conta</ion-button>
 
             Login.com
-            <ion-button>Google</ion-button>
-            <ion-button>Facebook</ion-button>
-            <ion-button>Twitter</ion-button>
+            <ion-button class="baseButton">Google</ion-button>
+            <ion-button class="baseButton">Facebook</ion-button>
+            <ion-button class="baseButton">Twitter</ion-button>
 
                     </ion-col>
             </ion-row>
